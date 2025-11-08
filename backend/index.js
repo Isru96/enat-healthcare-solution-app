@@ -20,7 +20,7 @@ app.set("static-path", join(__dirname, "assets"));
 // Enable CORS middleware
 app.use(cors());
 // parse json request body to object
-app.use(express.json());
+app.use(express.json()); // <-- THIS IS VERY IMPORTANT
 // Parse URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
 
