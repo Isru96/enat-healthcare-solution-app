@@ -20,7 +20,7 @@ app.set("static-path", join(__dirname, "assets"));
 // Enable CORS middleware
 app.use(cors());
 // parse json request body to object
-app.use(express.json());
+app.use(express.json()); // <-- THIS IS VERY IMPORTANT
 // Parse URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
 
@@ -31,9 +31,9 @@ app.use("/assets", express.static(app.get("static-path")));
 app.use("/api", routes);
 
 // // Define a route handler for GET requests to the root path '/'
-// app.get("/", (req, res) => {
-//   res.send("Hello my server!");
-// });
+app.get("/", (req, res) => {
+  res.send("Hello my server!");
+});
 
 //  Start Server and listen on the specified port
 app.listen(app.get("PORT"), (err) => {
